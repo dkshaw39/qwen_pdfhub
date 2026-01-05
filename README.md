@@ -1,104 +1,86 @@
 # PDFPro - Professional PDF Tools Suite
 
-PDFPro is a comprehensive web application that provides a wide range of PDF manipulation tools. All processing happens locally in the browser - no files are uploaded to any server, ensuring complete privacy and security.
+PDFPro is a comprehensive, privacy-focused web application that provides a wide range of PDF manipulation tools. All processing happens locally in your browser - no files are uploaded to any server, ensuring complete privacy and security.
 
 ## Features
 
-### 1. Organize PDF
-- Merge PDF: Combine multiple PDF files into a single document
-- Split PDF: Divide a PDF document into multiple separate files
-- Remove pages: Remove specific pages from a PDF document
-- Extract pages: Extract specific pages from a PDF document
-- Organize PDF: Rearrange pages in a PDF document
-- Scan to PDF: Create a PDF from images or scanned documents
+### Organize PDF
+- **Merge PDF**: Combine multiple PDF files into a single document
+- **Split PDF**: Split a PDF document into multiple files
+- **Remove Pages**: Remove unwanted pages from a PDF document
+- **Extract Pages**: Extract specific pages from a PDF document
+- **Organize PDF**: Organize and rearrange pages in a PDF document
+- **Scan to PDF**: Scan documents and save as PDF
 
-### 2. Optimize PDF
-- Compress PDF: Reduce the file size of a PDF document
-- Repair PDF: Fix corrupted or damaged PDF files
-- OCR PDF: Add text recognition to scanned PDF documents
+### Optimize PDF
+- **Compress PDF**: Reduce PDF file size while maintaining quality
+- **Repair PDF**: Repair corrupted PDF files
+- **OCR PDF**: Add OCR text layer to scanned PDFs
 
-### 3. Convert to PDF
-- JPG to PDF: Convert JPG images to PDF documents
-- WORD to PDF: Convert Word documents to PDF format
-- POWERPOINT to PDF: Convert PowerPoint presentations to PDF
-- EXCEL to PDF: Convert Excel spreadsheets to PDF format
-- HTML to PDF: Convert HTML pages to PDF documents
+### Convert to PDF
+- **JPG to PDF**: Convert JPG images to PDF
+- **WORD to PDF**: Convert WORD documents to PDF
+- **POWERPOINT to PDF**: Convert POWERPOINT presentations to PDF
+- **EXCEL to PDF**: Convert EXCEL spreadsheets to PDF
+- **HTML to PDF**: Convert HTML documents to PDF
 
-### 4. Convert from PDF
-- PDF to JPG: Convert PDF pages to JPG images
-- PDF to WORD: Convert PDF documents to editable Word files
-- PDF to POWERPOINT: Convert PDF presentations to PowerPoint format
-- PDF to EXCEL: Convert PDF tables to Excel spreadsheets
-- PDF to PDF/A: Convert PDF to archival PDF/A format
+### Convert from PDF
+- **PDF to JPG**: Convert PDF to JPG images
+- **PDF to WORD**: Convert PDF to WORD documents
+- **PDF to POWERPOINT**: Convert PDF to POWERPOINT presentations
+- **PDF to EXCEL**: Convert PDF to EXCEL spreadsheets
+- **PDF to PDF/A**: Convert PDF to PDF/A format
 
-### 5. Edit PDF
-- Rotate PDF: Rotate pages in a PDF document
-- Add page numbers: Add page numbers to a PDF document
-- Add watermark: Add watermarks to PDF documents
-- Crop PDF: Crop pages in a PDF document
-- Edit PDF: Edit text and elements in a PDF document
+### Edit PDF
+- **Rotate PDF**: Rotate PDF pages
+- **Add Page Numbers**: Add page numbers to PDF documents
+- **Add Watermark**: Add watermarks to PDF documents
+- **Crop PDF**: Crop PDF pages
+- **Edit PDF**: Edit text and elements in PDF documents
 
-### 6. PDF Security
-- Unlock PDF: Remove password protection from PDF documents
-- Protect PDF: Add password protection to PDF documents
-- Sign PDF: Add digital signatures to PDF documents
-- Redact PDF: Redact sensitive information from PDF documents
-- Compare PDF: Compare differences between two PDF documents
+### PDF Security
+- **Unlock PDF**: Remove password protection from PDF documents
+- **Protect PDF**: Add password protection to PDF documents
+- **Sign PDF**: Add digital signatures to PDF documents
+- **Redact PDF**: Redact sensitive information from PDF documents
+- **Compare PDF**: Compare differences between PDF documents
 
-## Privacy & Security
+## Security & Privacy
 
-- **No file uploads**: All processing happens locally in your browser
+- **No file uploads**: All processing happens in your browser
 - **No tracking**: We don't collect any usage data
-- **No login required**: Use tools instantly without creating an account
+- **No login required**: Use tools instantly
 - **100% free**: No hidden costs or subscriptions
-- **Secure processing**: Your documents stay private and never leave your computer
+- **Secure processing**: Your documents stay private
 
-## File Structure
+## Technology Stack
 
-```
-/workspace/
-├── index.html          # Main HTML file
-├── styles/
-│   └── main.css        # Main CSS stylesheet
-├── js/
-│   └── app.js          # Main JavaScript application
-└── README.md           # This file
-```
+- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
+- **PDF Processing**: PDF-lib.js library
+- **Icons**: Font Awesome
+- **Responsive Design**: Mobile-friendly layout
 
-## How It Works
+## How to Use
 
-PDFPro is built as a single-page application with:
+1. Open the application in your web browser
+2. Select a tool from the sidebar
+3. Follow the instructions on the tool page
+4. Upload your PDF files as needed
+5. Process your documents
+6. Download the results
 
-1. **Left Sidebar**: Contains all the PDF tools organized by category
-2. **Right Panel**: Shows tool details and includes a code editor with implementation examples
-3. **Code Editor**: Displays JavaScript code examples for each tool (using CodeMirror)
-4. **Privacy Focus**: All processing happens client-side with no server communication
+## Browser Compatibility
 
-## Technologies Used
+PDFPro works on all modern browsers including Chrome, Firefox, Safari, and Edge.
 
-- HTML5
-- CSS3
-- JavaScript (ES6+)
-- CodeMirror Editor
-- Font Awesome Icons
-- Responsive Design
+## Local Development
 
-## Getting Started
+To run PDFPro locally:
 
-1. Open `index.html` in any modern web browser
-2. Select a tool from the left sidebar
-3. View the implementation code in the editor
-4. Click "Run" to execute the code example
-5. See the output in the results panel
-
-## Future Enhancements
-
-- Integration with actual PDF processing libraries (like PDF-lib, jsPDF)
-- Drag and drop file support
-- Batch processing capabilities
-- Dark mode option
-- Mobile app version
+1. Clone or download the repository
+2. Open `index.html` in your web browser
+3. Start using the PDF tools
 
 ## License
 
-This project is completely free to use and modify.
+This project is open source and available under the MIT License.

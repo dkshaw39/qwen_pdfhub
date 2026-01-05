@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDFPro - Professional PDF Tools Suite</title>
+    <meta name="description" content="Free online PDF tools for merging, splitting, compressing, converting, editing and securing PDF documents. All processing happens locally in your browser - your files never leave your computer.">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
 </head>
 <body>
     <div class="app-container">
@@ -34,193 +34,113 @@
                 <div class="tools-category">
                     <h4><i class="fas fa-folder"></i> Organize PDF</h4>
                     <ul class="tools-list">
-                        <li data-tool="merge-pdf"><i class="fas fa-code-branch"></i> Merge PDF</li>
-                        <li data-tool="split-pdf"><i class="fas fa-scissors"></i> Split PDF</li>
-                        <li data-tool="remove-pages"><i class="fas fa-trash-alt"></i> Remove pages</li>
-                        <li data-tool="extract-pages"><i class="fas fa-file-export"></i> Extract pages</li>
-                        <li data-tool="organize-pdf"><i class="fas fa-sort"></i> Organize PDF</li>
-                        <li data-tool="scan-pdf"><i class="fas fa-camera"></i> Scan to PDF</li>
+                        <li><a href="tools/merge-pdf.html"><i class="fas fa-code-branch"></i> Merge PDF</a></li>
+                        <li><a href="tools/split-pdf.html"><i class="fas fa-scissors"></i> Split PDF</a></li>
+                        <li><a href="tools/remove-pages.html"><i class="fas fa-trash-alt"></i> Remove pages</a></li>
+                        <li><a href="tools/extract-pages.html"><i class="fas fa-file-export"></i> Extract pages</a></li>
+                        <li><a href="tools/organize-pdf.html"><i class="fas fa-sort"></i> Organize PDF</a></li>
+                        <li><a href="tools/scan-pdf.html"><i class="fas fa-camera"></i> Scan to PDF</a></li>
                     </ul>
                 </div>
 
                 <div class="tools-category">
                     <h4><i class="fas fa-bolt"></i> Optimize PDF</h4>
                     <ul class="tools-list">
-                        <li data-tool="compress-pdf"><i class="fas fa-compress"></i> Compress PDF</li>
-                        <li data-tool="repair-pdf"><i class="fas fa-wrench"></i> Repair PDF</li>
-                        <li data-tool="ocr-pdf"><i class="fas fa-font"></i> OCR PDF</li>
+                        <li><a href="tools/compress-pdf.html"><i class="fas fa-compress"></i> Compress PDF</a></li>
+                        <li><a href="tools/repair-pdf.html"><i class="fas fa-wrench"></i> Repair PDF</a></li>
+                        <li><a href="tools/ocr-pdf.html"><i class="fas fa-font"></i> OCR PDF</a></li>
                     </ul>
                 </div>
 
                 <div class="tools-category">
                     <h4><i class="fas fa-exchange-alt"></i> Convert to PDF</h4>
                     <ul class="tools-list">
-                        <li data-tool="jpg-to-pdf"><i class="fas fa-image"></i> JPG to PDF</li>
-                        <li data-tool="word-to-pdf"><i class="fas fa-file-word"></i> WORD to PDF</li>
-                        <li data-tool="ppt-to-pdf"><i class="fas fa-file-powerpoint"></i> POWERPOINT to PDF</li>
-                        <li data-tool="excel-to-pdf"><i class="fas fa-file-excel"></i> EXCEL to PDF</li>
-                        <li data-tool="html-to-pdf"><i class="fas fa-code"></i> HTML to PDF</li>
+                        <li><a href="tools/jpg-to-pdf.html"><i class="fas fa-image"></i> JPG to PDF</a></li>
+                        <li><a href="tools/word-to-pdf.html"><i class="fas fa-file-word"></i> WORD to PDF</a></li>
+                        <li><a href="tools/ppt-to-pdf.html"><i class="fas fa-file-powerpoint"></i> POWERPOINT to PDF</a></li>
+                        <li><a href="tools/excel-to-pdf.html"><i class="fas fa-file-excel"></i> EXCEL to PDF</a></li>
+                        <li><a href="tools/html-to-pdf.html"><i class="fas fa-code"></i> HTML to PDF</a></li>
                     </ul>
                 </div>
 
                 <div class="tools-category">
                     <h4><i class="fas fa-exchange-alt"></i> Convert from PDF</h4>
                     <ul class="tools-list">
-                        <li data-tool="pdf-to-jpg"><i class="fas fa-image"></i> PDF to JPG</li>
-                        <li data-tool="pdf-to-word"><i class="fas fa-file-word"></i> PDF to WORD</li>
-                        <li data-tool="pdf-to-ppt"><i class="fas fa-file-powerpoint"></i> PDF to POWERPOINT</li>
-                        <li data-tool="pdf-to-excel"><i class="fas fa-file-excel"></i> PDF to EXCEL</li>
-                        <li data-tool="pdf-to-pdfa"><i class="fas fa-file-archive"></i> PDF to PDF/A</li>
+                        <li><a href="tools/pdf-to-jpg.html"><i class="fas fa-image"></i> PDF to JPG</a></li>
+                        <li><a href="tools/pdf-to-word.html"><i class="fas fa-file-word"></i> PDF to WORD</a></li>
+                        <li><a href="tools/pdf-to-ppt.html"><i class="fas fa-file-powerpoint"></i> PDF to POWERPOINT</a></li>
+                        <li><a href="tools/pdf-to-excel.html"><i class="fas fa-file-excel"></i> PDF to EXCEL</a></li>
+                        <li><a href="tools/pdf-to-pdfa.html"><i class="fas fa-file-archive"></i> PDF to PDF/A</a></li>
                     </ul>
                 </div>
 
                 <div class="tools-category">
                     <h4><i class="fas fa-edit"></i> Edit PDF</h4>
                     <ul class="tools-list">
-                        <li data-tool="rotate-pdf"><i class="fas fa-rotate"></i> Rotate PDF</li>
-                        <li data-tool="add-page-numbers"><i class="fas fa-list-ol"></i> Add page numbers</li>
-                        <li data-tool="add-watermark"><i class="fas fa-water"></i> Add watermark</li>
-                        <li data-tool="crop-pdf"><i class="fas fa-crop"></i> Crop PDF</li>
-                        <li data-tool="edit-pdf"><i class="fas fa-edit"></i> Edit PDF</li>
+                        <li><a href="tools/rotate-pdf.html"><i class="fas fa-rotate"></i> Rotate PDF</a></li>
+                        <li><a href="tools/add-page-numbers.html"><i class="fas fa-list-ol"></i> Add page numbers</a></li>
+                        <li><a href="tools/add-watermark.html"><i class="fas fa-water"></i> Add watermark</a></li>
+                        <li><a href="tools/crop-pdf.html"><i class="fas fa-crop"></i> Crop PDF</a></li>
+                        <li><a href="tools/edit-pdf.html"><i class="fas fa-edit"></i> Edit PDF</a></li>
                     </ul>
                 </div>
 
                 <div class="tools-category">
                     <h4><i class="fas fa-lock"></i> PDF Security</h4>
                     <ul class="tools-list">
-                        <li data-tool="unlock-pdf"><i class="fas fa-unlock"></i> Unlock PDF</li>
-                        <li data-tool="protect-pdf"><i class="fas fa-lock"></i> Protect PDF</li>
-                        <li data-tool="sign-pdf"><i class="fas fa-signature"></i> Sign PDF</li>
-                        <li data-tool="redact-pdf"><i class="fas fa-redo"></i> Redact PDF</li>
-                        <li data-tool="compare-pdf"><i class="fas fa-copy"></i> Compare PDF</li>
+                        <li><a href="tools/unlock-pdf.html"><i class="fas fa-unlock"></i> Unlock PDF</a></li>
+                        <li><a href="tools/protect-pdf.html"><i class="fas fa-lock"></i> Protect PDF</a></li>
+                        <li><a href="tools/sign-pdf.html"><i class="fas fa-signature"></i> Sign PDF</a></li>
+                        <li><a href="tools/redact-pdf.html"><i class="fas fa-redo"></i> Redact PDF</a></li>
+                        <li><a href="tools/compare-pdf.html"><i class="fas fa-copy"></i> Compare PDF</a></li>
                     </ul>
                 </div>
             </nav>
 
             <!-- Main content area -->
             <main class="main-content">
-                <div class="tool-header">
-                    <h2 id="tool-title">Select a Tool</h2>
-                    <div class="tool-description">
-                        <p id="tool-description">Choose a tool from the sidebar to get started. All operations are performed locally in your browser - your files never leave your computer.</p>
-                    </div>
-                </div>
-
-                <div class="tool-content">
-                    <div class="privacy-notice">
-                        <div class="notice-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <div class="notice-content">
-                            <h3>Privacy First Approach</h3>
-                            <ul>
-                                <li><strong>No file uploads</strong> - All processing happens in your browser</li>
-                                <li><strong>No tracking</strong> - We don't collect any usage data</li>
-                                <li><strong>No login required</strong> - Use tools instantly</li>
-                                <li><strong>100% free</strong> - No hidden costs or subscriptions</li>
-                                <li><strong>Secure processing</strong> - Your documents stay private</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Tool functionality section -->
-                    <div id="tool-functionality" class="tool-functionality">
-                      <div id="merge-tool" class="tool-content active">
-                        <h3>Merge PDFs</h3>
-                        <div class="tool-description">
-                          <p>Combine multiple PDF files into a single document. All processing happens in your browser - no files are uploaded to any server.</p>
-                        </div>
-                        <div class="tool-interface">
-                          <div class="file-input-section">
-                            <label for="merge-files" class="file-upload-label">
-                              <i class="fas fa-cloud-upload-alt"></i>
-                              <span>Select PDF files to merge</span>
-                            </label>
-                            <input type="file" id="merge-files" accept=".pdf" multiple>
-                            <div class="file-list" id="merge-file-list">
-                              <p>No files selected yet</p>
+                <div class="welcome-section">
+                    <h2>Welcome to PDFPro</h2>
+                    <p>Professional PDF tools for all your document needs. Choose a tool from the sidebar to get started.</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
                             </div>
-                          </div>
-                          <div class="tool-controls">
-                            <button id="merge-btn" class="action-btn" disabled>Merge PDFs</button>
-                            <button id="download-merged" class="action-btn secondary" style="display:none;">Download Merged PDF</button>
-                          </div>
+                            <h3>100% Secure</h3>
+                            <p>Your files never leave your computer. All processing happens locally in your browser.</p>
                         </div>
-                      </div>
-                      
-                      <div id="split-tool" class="tool-content" style="display:none;">
-                        <h3>Split PDF</h3>
-                        <div class="tool-description">
-                          <p>Split a PDF document into multiple files. All processing happens in your browser - no files are uploaded to any server.</p>
-                        </div>
-                        <div class="tool-interface">
-                          <div class="file-input-section">
-                            <label for="split-file" class="file-upload-label">
-                              <i class="fas fa-file-pdf"></i>
-                              <span>Select PDF to split</span>
-                            </label>
-                            <input type="file" id="split-file" accept=".pdf">
-                            <div class="split-options">
-                              <label>Split by:
-                                <select id="split-method">
-                                  <option value="single">Single pages</option>
-                                  <option value="range">Page ranges</option>
-                                </select>
-                              </label>
-                              <input type="text" id="page-ranges" placeholder="e.g., 1-3, 5-7" style="display:none;">
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-bolt"></i>
                             </div>
-                          </div>
-                          <div class="tool-controls">
-                            <button id="split-btn" class="action-btn" disabled>Split PDF</button>
-                            <div class="output-files" id="split-output" style="display:none;">
-                              <h4>Split Files:</h4>
-                              <div id="split-files-list"></div>
+                            <h3>Fast Processing</h3>
+                            <p>Lightning-fast PDF operations powered by modern JavaScript libraries.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-lock"></i>
                             </div>
-                          </div>
+                            <h3>Privacy First</h3>
+                            <p>No tracking, no data collection, no login required. Your documents stay private.</p>
                         </div>
-                      </div>
-                      
-                      <div id="compress-tool" class="tool-content" style="display:none;">
-                        <h3>Compress PDF</h3>
-                        <div class="tool-description">
-                          <p>Reduce PDF file size while maintaining quality. All processing happens in your browser - no files are uploaded to any server.</p>
-                        </div>
-                        <div class="tool-interface">
-                          <div class="file-input-section">
-                            <label for="compress-file" class="file-upload-label">
-                              <i class="fas fa-compress-alt"></i>
-                              <span>Select PDF to compress</span>
-                            </label>
-                            <input type="file" id="compress-file" accept=".pdf">
-                            <div class="compression-options">
-                              <label>Compression level:
-                                <select id="compression-level">
-                                  <option value="low">Low (High Quality)</option>
-                                  <option value="medium" selected>Medium (Balanced)</option>
-                                  <option value="high">High (Small Size)</option>
-                                </select>
-                              </label>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-globe"></i>
                             </div>
-                          </div>
-                          <div class="tool-controls">
-                            <button id="compress-btn" class="action-btn" disabled>Compress PDF</button>
-                            <button id="download-compressed" class="action-btn secondary" style="display:none;">Download Compressed PDF</button>
-                          </div>
+                            <h3>Free to Use</h3>
+                            <p>All tools are completely free. No hidden costs or subscriptions required.</p>
                         </div>
-                      </div>
-                      
-                      <!-- Additional tools will be added here -->
-                      <div id="other-tools" class="tool-content" style="display:none;">
-                        <h3>Tool in Development</h3>
-                        <p>This tool is currently under development. Check back soon for more functionality.</p>
-                      </div>
                     </div>
                 </div>
             </main>
         </div>
     </div>
 
-    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
