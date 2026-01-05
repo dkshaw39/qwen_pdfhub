@@ -35,65 +35,94 @@ class PDFProApp {
     }
 
     setupEventListeners() {
-        // Tool selection
-        const toolItems = document.querySelectorAll('.tools-list li');
-        toolItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                const tool = e.target.dataset.tool || e.target.parentElement.dataset.tool;
+        // Tool selection - update to work with actual links in sidebar
+        const toolLinks = document.querySelectorAll('.tools-list a');
+        toolLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Prevent default navigation for now, we'll handle it in the app
+                e.preventDefault();
+                const href = link.getAttribute('href');
+                // Extract tool name from href (e.g., "tools/merge-pdf.html" -> "merge-pdf")
+                const tool = href.replace('tools/', '').replace('.html', '');
                 this.showTool(tool);
             });
         });
 
         // Merge tool events
-        document.getElementById('merge-files').addEventListener('change', (e) => {
-            this.handleMergeFiles(e.target.files);
-        });
+        const mergeFilesInput = document.getElementById('merge-files');
+        if (mergeFilesInput) {
+            mergeFilesInput.addEventListener('change', (e) => {
+                this.handleMergeFiles(e.target.files);
+            });
+        }
 
-        document.getElementById('merge-btn').addEventListener('click', () => {
-            this.mergePDFs();
-        });
+        const mergeBtn = document.getElementById('merge-btn');
+        if (mergeBtn) {
+            mergeBtn.addEventListener('click', () => {
+                this.mergePDFs();
+            });
+        }
 
-        document.getElementById('download-merged').addEventListener('click', () => {
-            this.downloadMergedPDF();
-        });
+        const downloadMergedBtn = document.getElementById('download-merged');
+        if (downloadMergedBtn) {
+            downloadMergedBtn.addEventListener('click', () => {
+                this.downloadMergedPDF();
+            });
+        }
 
         // Split tool events
-        document.getElementById('split-file').addEventListener('change', (e) => {
-            this.handleSplitFile(e.target.files[0]);
-        });
+        const splitFileInput = document.getElementById('split-file');
+        if (splitFileInput) {
+            splitFileInput.addEventListener('change', (e) => {
+                this.handleSplitFile(e.target.files[0]);
+            });
+        }
 
-        document.getElementById('split-btn').addEventListener('click', () => {
-            this.splitPDF();
-        });
+        const splitBtn = document.getElementById('split-btn');
+        if (splitBtn) {
+            splitBtn.addEventListener('click', () => {
+                this.splitPDF();
+            });
+        }
 
-        document.getElementById('split-method').addEventListener('change', (e) => {
-            this.handleSplitMethodChange(e.target.value);
-        });
+        const splitMethodSelect = document.getElementById('split-method');
+        if (splitMethodSelect) {
+            splitMethodSelect.addEventListener('change', (e) => {
+                this.handleSplitMethodChange(e.target.value);
+            });
+        }
 
         // Compress tool events
-        document.getElementById('compress-file').addEventListener('change', (e) => {
-            this.handleCompressFile(e.target.files[0]);
-        });
+        const compressFileInput = document.getElementById('compress-file');
+        if (compressFileInput) {
+            compressFileInput.addEventListener('change', (e) => {
+                this.handleCompressFile(e.target.files[0]);
+            });
+        }
 
-        document.getElementById('compress-btn').addEventListener('click', () => {
-            this.compressPDF();
-        });
+        const compressBtn = document.getElementById('compress-btn');
+        if (compressBtn) {
+            compressBtn.addEventListener('click', () => {
+                this.compressPDF();
+            });
+        }
 
-        document.getElementById('download-compressed').addEventListener('click', () => {
-            this.downloadCompressedPDF();
-        });
+        const downloadCompressedBtn = document.getElementById('download-compressed');
+        if (downloadCompressedBtn) {
+            downloadCompressedBtn.addEventListener('click', () => {
+                this.downloadCompressedPDF();
+            });
+        }
     }
 
     showTool(tool) {
-        // Update active tool in sidebar
-        document.querySelectorAll('.tools-list li').forEach(item => {
-            item.classList.remove('active');
+        // Update active tool in sidebar - find the link that matches the tool
+        document.querySelectorAll('.tools-list a').forEach(link => {
+            link.parentElement.classList.remove('active');
+            if (link.getAttribute('href') === `tools/${tool}.html`) {
+                link.parentElement.classList.add('active');
+            }
         });
-        
-        const activeItem = document.querySelector(`[data-tool="${tool}"]`);
-        if (activeItem) {
-            activeItem.classList.add('active');
-        }
 
         // Hide all tool content
         document.querySelectorAll('.tool-content').forEach(content => {
@@ -101,12 +130,24 @@ class PDFProApp {
         });
 
         // Show specific tool content
-        const toolElement = document.getElementById(`${tool.replace('-', '')}-tool`);
+        // Map tool names to the corresponding element IDs in the current HTML
+        const toolMap = {
+            'merge-pdf': 'mergepdf',
+            'split-pdf': 'splitpdf',
+            'compress-pdf': 'compresspdf'
+        };
+        
+        const toolKey = toolMap[tool] || 'other';
+        const toolElement = document.getElementById(`${toolKey}-tool`);
+        
         if (toolElement) {
             toolElement.classList.add('active');
         } else {
             // If tool doesn't have specific UI, show the generic one
-            document.getElementById('other-tools').classList.add('active');
+            const otherTools = document.getElementById('other-tools');
+            if (otherTools) {
+                otherTools.classList.add('active');
+            }
         }
 
         // Update tool header
@@ -177,8 +218,8 @@ class PDFProApp {
             'compare-pdf': 'Compare two PDF documents. All processing happens in your browser - your files never leave your computer.'
         };
 
-        toolTitle.textContent = toolNames[tool] || 'Tool';
-        toolDescription.textContent = toolDescriptions[tool] || 'Select a tool from the sidebar to get started. All operations are performed locally in your browser - your files never leave your computer.';
+        if (toolTitle) toolTitle.textContent = toolNames[tool] || 'Tool';
+        if (toolDescription) toolDescription.textContent = toolDescriptions[tool] || 'Select a tool from the sidebar to get started. All operations are performed locally in your browser - your files never leave your computer.';
     }
 
     // Merge PDFs functionality
@@ -334,7 +375,7 @@ class PDFProApp {
                 }
             } else {
                 // Split by page ranges
-                const rangeInput = document.getElementById('page-ranges').value;
+                const rangeInput = document.getElementById('page-range-input').value;
                 if (!rangeInput.trim()) {
                     alert('Please enter page ranges (e.g., 1-3, 5-7).');
                     splitBtn.innerHTML = originalText;
@@ -347,17 +388,16 @@ class PDFProApp {
                 for (const range of ranges) {
                     if (range.includes('-')) {
                         const [start, end] = range.split('-').map(num => parseInt(num.trim()) - 1);
-                        for (let i = start; i <= end; i++) {
-                            if (i < totalPages) {
-                                if (!pageRanges[pageRanges.length - 1] || pageRanges[pageRanges.length - 1].length > 0 && pageRanges[pageRanges.length - 1][pageRanges[pageRanges.length - 1].length - 1] !== i - 1) {
-                                    pageRanges.push([]);
-                                }
-                                pageRanges[pageRanges.length - 1].push(i);
+                        if (start >= 0 && end < totalPages && start <= end) {
+                            const rangeArray = [];
+                            for (let i = start; i <= end; i++) {
+                                rangeArray.push(i);
                             }
+                            pageRanges.push(rangeArray);
                         }
                     } else {
                         const pageNum = parseInt(range.trim()) - 1;
-                        if (pageNum < totalPages) {
+                        if (pageNum >= 0 && pageNum < totalPages) {
                             pageRanges.push([pageNum]);
                         }
                     }
@@ -550,7 +590,7 @@ class PDFProApp {
         } catch (error) {
             console.error(`Error processing ${tool}:`, error);
             alert(`Error processing ${tool}. Please try again.`);
-            
+
             // Reset button
             const btn = document.querySelector(`#${tool.replace('-', '')}-btn`);
             if (btn) {
@@ -570,317 +610,3 @@ document.addEventListener('DOMContentLoaded', () => {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = PDFProApp;
 }
-            resolve({
-                success: true,
-                message: 'PDF cropped successfully',
-                result: 'cropped_document.pdf'
-            });
-        }, 1000);
-    });
-}
-
-// Example usage:
-// cropPDF('document.pdf', { left: 50, top: 50, width: 400, height: 600 })
-//     .then(result => console.log(result));`
-            },
-            'edit-pdf': {
-                title: 'Edit PDF',
-                description: 'Edit text and elements in a PDF document.',
-                code: `// Edit PDF implementation
-function editPDF(pdfFile, edits) {
-    console.log('Editing PDF:', pdfFile, 'edits:', edits);
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve({
-                success: true,
-                message: 'PDF edited successfully',
-                result: 'edited_document.pdf'
-            });
-        }, 1000);
-    });
-}
-
-// Example usage:
-// editPDF('document.pdf', [{ type: 'text', page: 1, x: 100, y: 200, content: 'New text' }])
-//     .then(result => console.log(result));`
-            },
-            
-            // PDF Security tools
-            'unlock-pdf': {
-                title: 'Unlock PDF',
-                description: 'Remove password protection from PDF documents.',
-                code: `// Unlock PDF implementation
-function unlockPDF(pdfFile, password) {
-    console.log('Unlocking PDF:', pdfFile, 'with password');
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve({
-                success: true,
-                message: 'PDF unlocked successfully',
-                result: 'unlocked_document.pdf'
-            });
-        }, 1000);
-    });
-}
-
-// Example usage:
-// unlockPDF('protected.pdf', 'password123')
-//     .then(result => console.log(result));`
-            },
-            'protect-pdf': {
-                title: 'Protect PDF',
-                description: 'Add password protection to PDF documents.',
-                code: `// Protect PDF implementation
-function protectPDF(pdfFile, password, permissions = {}) {
-    console.log('Protecting PDF:', pdfFile, 'password and permissions:', permissions);
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve({
-                success: true,
-                message: 'PDF protected successfully',
-                result: 'protected_document.pdf'
-            });
-        }, 1000);
-    });
-}
-
-// Example usage:
-// protectPDF('document.pdf', 'securePassword', { canPrint: true, canCopy: false })
-//     .then(result => console.log(result));`
-            },
-            'sign-pdf': {
-                title: 'Sign PDF',
-                description: 'Add digital signatures to PDF documents.',
-                code: `// Sign PDF implementation
-function signPDF(pdfFile, signature) {
-    console.log('Signing PDF:', pdfFile, 'with signature');
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve({
-                success: true,
-                message: 'PDF signed successfully',
-                result: 'signed_document.pdf'
-            });
-        }, 1000);
-    });
-}
-
-// Example usage:
-// signPDF('document.pdf', { name: 'John Doe', location: 'New York', reason: 'Approved' })
-//     .then(result => console.log(result));`
-            },
-            'redact-pdf': {
-                title: 'Redact PDF',
-                description: 'Redact sensitive information from PDF documents.',
-                code: `// Redact PDF implementation
-function redactPDF(pdfFile, redactions) {
-    console.log('Redacting PDF:', pdfFile, 'redactions:', redactions);
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve({
-                success: true,
-                message: 'PDF redacted successfully',
-                result: 'redacted_document.pdf'
-            });
-        }, 1000);
-    });
-}
-
-// Example usage:
-// redactPDF('document.pdf', [{ page: 1, x: 100, y: 200, width: 200, height: 50 }])
-//     .then(result => console.log(result));`
-            },
-            'compare-pdf': {
-                title: 'Compare PDF',
-                description: 'Compare differences between two PDF documents.',
-                code: `// Compare PDF implementation
-function comparePDF(pdf1, pdf2) {
-    console.log('Comparing PDFs:', pdf1, 'and', pdf2);
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve({
-                success: true,
-                message: 'PDF comparison completed',
-                differences: [
-                    { page: 1, type: 'text', position: { x: 100, y: 200 }, old: 'Old text', new: 'New text' },
-                    { page: 2, type: 'image', position: { x: 150, y: 300 }, status: 'added' }
-                ],
-                result: 'comparison_report.pdf'
-            });
-        }, 1000);
-    });
-}
-
-// Example usage:
-// comparePDF('document_v1.pdf', 'document_v2.pdf')
-//     .then(result => console.log(result));`
-            }
-        };
-        
-        this.init();
-    }
-    
-    init() {
-        this.setupEventListeners();
-        this.initializeCodeEditor();
-        this.showDefaultView();
-    }
-    
-    setupEventListeners() {
-        // Tool selection
-        const toolItems = document.querySelectorAll('.tools-list li');
-        toolItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                const toolId = e.currentTarget.getAttribute('data-tool');
-                this.selectTool(toolId);
-            });
-        });
-        
-        // Run button
-        document.getElementById('run-btn').addEventListener('click', () => {
-            this.runCode();
-        });
-        
-        // Reset button
-        document.getElementById('reset-btn').addEventListener('click', () => {
-            this.resetEditor();
-        });
-    }
-    
-    initializeCodeEditor() {
-        const codeEditorElement = document.getElementById('code-editor');
-        this.editor = CodeMirror.fromTextArea(codeEditorElement, {
-            mode: 'javascript',
-            theme: 'default',
-            lineNumbers: true,
-            lineWrapping: true,
-            indentUnit: 4,
-            tabSize: 4,
-            indentWithTabs: true,
-            autoCloseBrackets: true,
-            matchBrackets: true,
-            showCursorWhenSelecting: true,
-            styleActiveLine: true,
-            gutters: ["CodeMirror-lint-markers"],
-            lint: true
-        });
-    }
-    
-    selectTool(toolId) {
-        // Update active state in sidebar
-        document.querySelectorAll('.tools-list li').forEach(item => {
-            item.classList.remove('active');
-        });
-        document.querySelector(`[data-tool="${toolId}"]`).classList.add('active');
-        
-        // Update tool information
-        const toolData = this.toolsData[toolId];
-        if (toolData) {
-            document.getElementById('tool-title').textContent = toolData.title;
-            document.getElementById('tool-description').textContent = toolData.description;
-            
-            // Update code editor with tool-specific code
-            this.editor.setValue(toolData.code);
-            this.currentTool = toolId;
-        }
-        
-        // Clear output
-        document.getElementById('output').textContent = '';
-    }
-    
-    showDefaultView() {
-        document.getElementById('tool-title').textContent = 'Select a Tool';
-        document.getElementById('tool-description').textContent = 
-            'Choose a tool from the sidebar to get started. All operations are performed locally in your browser - your files never leave your computer.';
-        
-        this.editor.setValue(`// Welcome to PDFPro!
-// Select a tool from the sidebar to see its implementation code.
-// All processing happens locally in your browser - no server uploads!
-
-// Example of what you might see:
-function examplePDFTool() {
-    // This would be the actual implementation code for the selected tool
-    console.log('Tool implementation would appear here');
-}`);
-        
-        document.getElementById('output').textContent = 'Select a tool from the sidebar to begin.';
-    }
-    
-    runCode() {
-        try {
-            // Get the current code from the editor
-            const code = this.editor.getValue();
-            
-            // Create a function from the code to run it safely
-            const func = new Function(code + '; return {' + 
-                Object.keys(this.toolsData).map(key => 
-                    `${key}: typeof ${key.split('-').join('_')} !== "undefined" ? ${key.split('-').join('_')} : undefined`
-                ).join(', ') + 
-            '};');
-            
-            // Execute the code and get the functions
-            const result = func();
-            
-            // Display the result
-            document.getElementById('output').textContent = `Code executed successfully!\n\nAvailable functions: ${Object.keys(result).filter(key => result[key]).join(', ')}`;
-            
-            // If we have a specific function related to the current tool, try to run it
-            if (this.currentTool) {
-                const toolFuncName = this.currentTool.split('-').join('_');
-                if (result[toolFuncName]) {
-                    // Show a message that the function is ready to use
-                    document.getElementById('output').textContent += `\n\nThe ${this.currentTool} function is ready to use with your files.`;
-                }
-            }
-        } catch (error) {
-            document.getElementById('output').textContent = `Error executing code: ${error.message}`;
-        }
-    }
-    
-    resetEditor() {
-        if (this.currentTool && this.toolsData[this.currentTool]) {
-            this.editor.setValue(this.toolsData[this.currentTool].code);
-            document.getElementById('output').textContent = '';
-        } else {
-            this.showDefaultView();
-        }
-    }
-}
-
-// Initialize the app when the DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    new PDFProApp();
-});
-
-// Add some utility functions that might be used in the code examples
-window.PDFProUtils = {
-    // Simulate file selection
-    selectFiles: function(accept) {
-        return new Promise((resolve) => {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = accept;
-            input.multiple = true;
-            
-            input.onchange = (e) => {
-                const files = Array.from(e.target.files);
-                resolve(files.map(file => file.name));
-            };
-            
-            input.click();
-        });
-    },
-    
-    // Simulate download
-    downloadFile: function(content, filename) {
-        const blob = new Blob([content], { type: 'application/pdf' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-    }
-};

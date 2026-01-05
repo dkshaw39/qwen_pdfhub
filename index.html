@@ -99,41 +99,162 @@
 
             <!-- Main content area -->
             <main class="main-content">
-                <div class="welcome-section">
-                    <h2>Welcome to PDFPro</h2>
-                    <p>Professional PDF tools for all your document needs. Choose a tool from the sidebar to get started.</p>
-                    
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <h3>100% Secure</h3>
-                            <p>Your files never leave your computer. All processing happens locally in your browser.</p>
+                <div class="tool-header">
+                    <h2 id="tool-title">Welcome to PDFPro</h2>
+                    <div class="tool-description">
+                        <p id="tool-description">Professional PDF tools for all your document needs. Choose a tool from the sidebar to get started.</p>
+                    </div>
+                </div>
+
+                <!-- Privacy notice section -->
+                <div class="privacy-notice">
+                    <div class="notice-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="notice-content">
+                        <h3>100% Privacy Guaranteed</h3>
+                        <p>Your files never leave your computer. All processing happens locally in your browser with no server uploads.</p>
+                        <ul>
+                            <li>No data is sent to any server</li>
+                            <li>No tracking or analytics</li>
+                            <li>Your documents stay completely private</li>
+                            <li>All processing is done in your browser</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tool functionality sections -->
+                <div class="tool-functionality">
+                    <!-- Merge PDF Tool -->
+                    <div id="mergepdf-tool" class="tool-content active">
+                        <h3>Merge PDFs</h3>
+                        <div class="tool-description">
+                            <p>Combine multiple PDF files into a single document. All processing happens in your browser - your files never leave your computer.</p>
                         </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-bolt"></i>
+                        <div class="tool-interface">
+                            <div class="file-input-section">
+                                <label for="merge-files" class="file-upload-label">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Select PDF files to merge</span>
+                                    <p>(Multiple files supported)</p>
+                                </label>
+                                <input type="file" id="merge-files" accept=".pdf" multiple>
+                                <div id="merge-file-list" class="file-list">
+                                    <p>No files selected yet</p>
+                                </div>
                             </div>
-                            <h3>Fast Processing</h3>
-                            <p>Lightning-fast PDF operations powered by modern JavaScript libraries.</p>
+                            
+                            <div class="tool-controls">
+                                <button id="merge-btn" class="action-btn primary" disabled>
+                                    <i class="fas fa-code-branch"></i> Merge PDFs
+                                </button>
+                                <button id="download-merged" class="action-btn secondary" style="display: none;">
+                                    <i class="fas fa-download"></i> Download Merged PDF
+                                </button>
+                            </div>
                         </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-lock"></i>
-                            </div>
-                            <h3>Privacy First</h3>
-                            <p>No tracking, no data collection, no login required. Your documents stay private.</p>
+                    </div>
+
+                    <!-- Split PDF Tool -->
+                    <div id="splitpdf-tool" class="tool-content">
+                        <h3>Split PDF</h3>
+                        <div class="tool-description">
+                            <p>Split a PDF document into multiple files. All processing happens in your browser - your files never leave your computer.</p>
                         </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-globe"></i>
+                        <div class="tool-interface">
+                            <div class="file-input-section">
+                                <label for="split-file" class="file-upload-label">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <span>Select PDF file to split</span>
+                                </label>
+                                <input type="file" id="split-file" accept=".pdf">
                             </div>
-                            <h3>Free to Use</h3>
-                            <p>All tools are completely free. No hidden costs or subscriptions required.</p>
+                            
+                            <div class="split-options">
+                                <label>
+                                    Split method:
+                                    <select id="split-method">
+                                        <option value="single">Each page as separate file</option>
+                                        <option value="range">By page ranges</option>
+                                    </select>
+                                </label>
+                                
+                                <label id="page-ranges" style="display: none;">
+                                    Page ranges (e.g., 1-3, 5-7):
+                                    <input type="text" id="page-range-input" placeholder="Enter page ranges">
+                                </label>
+                            </div>
+                            
+                            <div class="tool-controls">
+                                <button id="split-btn" class="action-btn primary" disabled>
+                                    <i class="fas fa-scissors"></i> Split PDF
+                                </button>
+                            </div>
+                            
+                            <div id="split-output" class="output-files" style="display: none;">
+                                <h4>Split Files</h4>
+                                <div id="split-files-list"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Compress PDF Tool -->
+                    <div id="compresspdf-tool" class="tool-content">
+                        <h3>Compress PDF</h3>
+                        <div class="tool-description">
+                            <p>Reduce PDF file size while maintaining quality. All processing happens in your browser - your files never leave your computer.</p>
+                        </div>
+                        <div class="tool-interface">
+                            <div class="file-input-section">
+                                <label for="compress-file" class="file-upload-label">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <span>Select PDF file to compress</span>
+                                </label>
+                                <input type="file" id="compress-file" accept=".pdf">
+                            </div>
+                            
+                            <div class="compression-options">
+                                <label>
+                                    Compression level:
+                                    <select id="compression-level">
+                                        <option value="low">Low (Better quality)</option>
+                                        <option value="medium" selected>Medium (Balanced)</option>
+                                        <option value="high">High (Smaller size)</option>
+                                    </select>
+                                </label>
+                            </div>
+                            
+                            <div class="tool-controls">
+                                <button id="compress-btn" class="action-btn primary" disabled>
+                                    <i class="fas fa-compress"></i> Compress PDF
+                                </button>
+                                <button id="download-compressed" class="action-btn secondary" style="display: none;">
+                                    <i class="fas fa-download"></i> Download Compressed PDF
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Other tools placeholder -->
+                    <div id="other-tools" class="tool-content">
+                        <h3>Advanced PDF Tools</h3>
+                        <div class="tool-description">
+                            <p>This tool is ready for implementation. All processing happens in your browser - your files never leave your computer.</p>
+                        </div>
+                        <div class="tool-interface">
+                            <div class="file-input-section">
+                                <label for="other-tool-file" class="file-upload-label">
+                                    <i class="fas fa-file"></i>
+                                    <span>Select a file to process</span>
+                                </label>
+                                <input type="file" id="other-tool-file" accept=".pdf">
+                            </div>
+                            
+                            <div class="tool-controls">
+                                <button id="other-tool-btn" class="action-btn primary" disabled>
+                                    <i class="fas fa-cogs"></i> Process File
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
