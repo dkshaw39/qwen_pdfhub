@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDFPro - Professional PDF Tools Suite</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo-container">
+                <i class="fas fa-file-pdf logo-icon"></i>
+                <h1>PDFPro</h1>
+            </div>
+            <div class="header-info">
+                <div class="privacy-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>100% Private • No Server Uploads</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="app-content">
+            <!-- Sidebar with tools -->
+            <nav class="sidebar">
+                <div class="sidebar-header">
+                    <h3>PDF Tools</h3>
+                </div>
+                
+                <div class="tools-category">
+                    <h4><i class="fas fa-folder"></i> Organize PDF</h4>
+                    <ul class="tools-list">
+                        <li data-tool="merge-pdf"><i class="fas fa-code-branch"></i> Merge PDF</li>
+                        <li data-tool="split-pdf"><i class="fas fa-scissors"></i> Split PDF</li>
+                        <li data-tool="remove-pages"><i class="fas fa-trash-alt"></i> Remove pages</li>
+                        <li data-tool="extract-pages"><i class="fas fa-file-export"></i> Extract pages</li>
+                        <li data-tool="organize-pdf"><i class="fas fa-sort"></i> Organize PDF</li>
+                        <li data-tool="scan-pdf"><i class="fas fa-camera"></i> Scan to PDF</li>
+                    </ul>
+                </div>
+
+                <div class="tools-category">
+                    <h4><i class="fas fa-bolt"></i> Optimize PDF</h4>
+                    <ul class="tools-list">
+                        <li data-tool="compress-pdf"><i class="fas fa-compress"></i> Compress PDF</li>
+                        <li data-tool="repair-pdf"><i class="fas fa-wrench"></i> Repair PDF</li>
+                        <li data-tool="ocr-pdf"><i class="fas fa-font"></i> OCR PDF</li>
+                    </ul>
+                </div>
+
+                <div class="tools-category">
+                    <h4><i class="fas fa-exchange-alt"></i> Convert to PDF</h4>
+                    <ul class="tools-list">
+                        <li data-tool="jpg-to-pdf"><i class="fas fa-image"></i> JPG to PDF</li>
+                        <li data-tool="word-to-pdf"><i class="fas fa-file-word"></i> WORD to PDF</li>
+                        <li data-tool="ppt-to-pdf"><i class="fas fa-file-powerpoint"></i> POWERPOINT to PDF</li>
+                        <li data-tool="excel-to-pdf"><i class="fas fa-file-excel"></i> EXCEL to PDF</li>
+                        <li data-tool="html-to-pdf"><i class="fas fa-code"></i> HTML to PDF</li>
+                    </ul>
+                </div>
+
+                <div class="tools-category">
+                    <h4><i class="fas fa-exchange-alt"></i> Convert from PDF</h4>
+                    <ul class="tools-list">
+                        <li data-tool="pdf-to-jpg"><i class="fas fa-image"></i> PDF to JPG</li>
+                        <li data-tool="pdf-to-word"><i class="fas fa-file-word"></i> PDF to WORD</li>
+                        <li data-tool="pdf-to-ppt"><i class="fas fa-file-powerpoint"></i> PDF to POWERPOINT</li>
+                        <li data-tool="pdf-to-excel"><i class="fas fa-file-excel"></i> PDF to EXCEL</li>
+                        <li data-tool="pdf-to-pdfa"><i class="fas fa-file-archive"></i> PDF to PDF/A</li>
+                    </ul>
+                </div>
+
+                <div class="tools-category">
+                    <h4><i class="fas fa-edit"></i> Edit PDF</h4>
+                    <ul class="tools-list">
+                        <li data-tool="rotate-pdf"><i class="fas fa-rotate"></i> Rotate PDF</li>
+                        <li data-tool="add-page-numbers"><i class="fas fa-list-ol"></i> Add page numbers</li>
+                        <li data-tool="add-watermark"><i class="fas fa-water"></i> Add watermark</li>
+                        <li data-tool="crop-pdf"><i class="fas fa-crop"></i> Crop PDF</li>
+                        <li data-tool="edit-pdf"><i class="fas fa-edit"></i> Edit PDF</li>
+                    </ul>
+                </div>
+
+                <div class="tools-category">
+                    <h4><i class="fas fa-lock"></i> PDF Security</h4>
+                    <ul class="tools-list">
+                        <li data-tool="unlock-pdf"><i class="fas fa-unlock"></i> Unlock PDF</li>
+                        <li data-tool="protect-pdf"><i class="fas fa-lock"></i> Protect PDF</li>
+                        <li data-tool="sign-pdf"><i class="fas fa-signature"></i> Sign PDF</li>
+                        <li data-tool="redact-pdf"><i class="fas fa-redo"></i> Redact PDF</li>
+                        <li data-tool="compare-pdf"><i class="fas fa-copy"></i> Compare PDF</li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main content area -->
+            <main class="main-content">
+                <div class="tool-header">
+                    <h2 id="tool-title">Select a Tool</h2>
+                    <div class="tool-description">
+                        <p id="tool-description">Choose a tool from the sidebar to get started. All operations are performed locally in your browser - your files never leave your computer.</p>
+                    </div>
+                </div>
+
+                <div class="tool-content">
+                    <div class="privacy-notice">
+                        <div class="notice-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="notice-content">
+                            <h3>Privacy First Approach</h3>
+                            <ul>
+                                <li><strong>No file uploads</strong> - All processing happens in your browser</li>
+                                <li><strong>No tracking</strong> - We don't collect any usage data</li>
+                                <li><strong>No login required</strong> - Use tools instantly</li>
+                                <li><strong>100% free</strong> - No hidden costs or subscriptions</li>
+                                <li><strong>Secure processing</strong> - Your documents stay private</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="code-editor-container">
+                        <div class="editor-header">
+                            <h3>Tool Implementation</h3>
+                            <div class="editor-controls">
+                                <button class="btn btn-primary" id="run-btn"><i class="fas fa-play"></i> Run</button>
+                                <button class="btn btn-secondary" id="reset-btn"><i class="fas fa-redo"></i> Reset</button>
+                            </div>
+                        </div>
+                        <textarea id="code-editor" class="code-editor"></textarea>
+                        <div class="output-area">
+                            <h4>Output</h4>
+                            <div id="output" class="output-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
