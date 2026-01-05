@@ -1,0 +1,21 @@
+{
+  "name": "pdfpro",
+  "version": "1.0.0",
+  "description": "Professional PDF Tools Suite",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -o",
+    "dev": "http-server -c-1 -o"
+  },
+  "keywords": ["pdf", "tools", "merge", "split", "compress"],
+  "author": "PDFPro",
+  "license": "MIT",
+  "dependencies": {
+    "pdf-lib": "^1.17.1",
+    "jszip": "^3.10.1",
+    "pdfjs-dist": "^3.4.120"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

@@ -123,27 +123,104 @@
                         </div>
                     </div>
 
-                    <div class="code-editor-container">
-                        <div class="editor-header">
-                            <h3>Tool Implementation</h3>
-                            <div class="editor-controls">
-                                <button class="btn btn-primary" id="run-btn"><i class="fas fa-play"></i> Run</button>
-                                <button class="btn btn-secondary" id="reset-btn"><i class="fas fa-redo"></i> Reset</button>
+                    <!-- Tool functionality section -->
+                    <div id="tool-functionality" class="tool-functionality">
+                      <div id="merge-tool" class="tool-content active">
+                        <h3>Merge PDFs</h3>
+                        <div class="tool-description">
+                          <p>Combine multiple PDF files into a single document. All processing happens in your browser - no files are uploaded to any server.</p>
+                        </div>
+                        <div class="tool-interface">
+                          <div class="file-input-section">
+                            <label for="merge-files" class="file-upload-label">
+                              <i class="fas fa-cloud-upload-alt"></i>
+                              <span>Select PDF files to merge</span>
+                            </label>
+                            <input type="file" id="merge-files" accept=".pdf" multiple>
+                            <div class="file-list" id="merge-file-list">
+                              <p>No files selected yet</p>
                             </div>
+                          </div>
+                          <div class="tool-controls">
+                            <button id="merge-btn" class="action-btn" disabled>Merge PDFs</button>
+                            <button id="download-merged" class="action-btn secondary" style="display:none;">Download Merged PDF</button>
+                          </div>
                         </div>
-                        <textarea id="code-editor" class="code-editor"></textarea>
-                        <div class="output-area">
-                            <h4>Output</h4>
-                            <div id="output" class="output-content"></div>
+                      </div>
+                      
+                      <div id="split-tool" class="tool-content" style="display:none;">
+                        <h3>Split PDF</h3>
+                        <div class="tool-description">
+                          <p>Split a PDF document into multiple files. All processing happens in your browser - no files are uploaded to any server.</p>
                         </div>
+                        <div class="tool-interface">
+                          <div class="file-input-section">
+                            <label for="split-file" class="file-upload-label">
+                              <i class="fas fa-file-pdf"></i>
+                              <span>Select PDF to split</span>
+                            </label>
+                            <input type="file" id="split-file" accept=".pdf">
+                            <div class="split-options">
+                              <label>Split by:
+                                <select id="split-method">
+                                  <option value="single">Single pages</option>
+                                  <option value="range">Page ranges</option>
+                                </select>
+                              </label>
+                              <input type="text" id="page-ranges" placeholder="e.g., 1-3, 5-7" style="display:none;">
+                            </div>
+                          </div>
+                          <div class="tool-controls">
+                            <button id="split-btn" class="action-btn" disabled>Split PDF</button>
+                            <div class="output-files" id="split-output" style="display:none;">
+                              <h4>Split Files:</h4>
+                              <div id="split-files-list"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div id="compress-tool" class="tool-content" style="display:none;">
+                        <h3>Compress PDF</h3>
+                        <div class="tool-description">
+                          <p>Reduce PDF file size while maintaining quality. All processing happens in your browser - no files are uploaded to any server.</p>
+                        </div>
+                        <div class="tool-interface">
+                          <div class="file-input-section">
+                            <label for="compress-file" class="file-upload-label">
+                              <i class="fas fa-compress-alt"></i>
+                              <span>Select PDF to compress</span>
+                            </label>
+                            <input type="file" id="compress-file" accept=".pdf">
+                            <div class="compression-options">
+                              <label>Compression level:
+                                <select id="compression-level">
+                                  <option value="low">Low (High Quality)</option>
+                                  <option value="medium" selected>Medium (Balanced)</option>
+                                  <option value="high">High (Small Size)</option>
+                                </select>
+                              </label>
+                            </div>
+                          </div>
+                          <div class="tool-controls">
+                            <button id="compress-btn" class="action-btn" disabled>Compress PDF</button>
+                            <button id="download-compressed" class="action-btn secondary" style="display:none;">Download Compressed PDF</button>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <!-- Additional tools will be added here -->
+                      <div id="other-tools" class="tool-content" style="display:none;">
+                        <h3>Tool in Development</h3>
+                        <p>This tool is currently under development. Check back soon for more functionality.</p>
+                      </div>
                     </div>
                 </div>
             </main>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
